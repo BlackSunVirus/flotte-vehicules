@@ -1,11 +1,14 @@
 package services;
 
 import DAO.ReservationDAO;
+import DAO.ReservationDAOImpl;
 import DAO.VehiculeDAO;
+import DAO.VehiculeDAOImpl;
 import models.Flotte;
 import models.Vehicule;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
@@ -15,10 +18,10 @@ public class VehiculeService {
     private ReservationDAO reservationDAO;
     private Flotte flotte;
 
-    public VehiculeService(VehiculeDAO vehiculeDAO, ReservationDAO reservationDAO, Flotte flotte) {
-        this.vehiculeDAO = vehiculeDAO;
-        this.reservationDAO = reservationDAO;
-        this.flotte = flotte;
+    public VehiculeService() {
+        this.vehiculeDAO = new VehiculeDAOImpl();
+        this.reservationDAO = new ReservationDAOImpl();
+        this.flotte = new Flotte(new ArrayList<>());
     }
 
     public void ajouterVehicule(Vehicule v) {
@@ -50,19 +53,20 @@ public class VehiculeService {
 
     // par marque puis par modèle
     public void trierParMarque() {
-
-        Comparator<Vehicule> comparator = Comparator.comparing(Vehicule::getMarque)
+        Comparator<Vehicule> parMarque = Comparator.comparing(Vehicule::getMarque)
                 .thenComparing(Vehicule::getModele);
-        this.flotte.getVehicules().sort(comparator);
+        this.flotte.getVehicules().sort(parMarque);
     }
 
     // date de mise en circulation du plus ancien au plus récent
     public void trierParDate() {
-
+        Comparator<Vehicule> parDate = Comparator.comparing(Vehicule::getDateMiseEnCirculation);
+        this.flotte.getVehicules().sort(parDate);
     }
 
     // décroissant
     public void trierParKilometrage() {
-
+        Comparator<Vehicule> parKmDecroissant = Comparator.comparing(Vehicule::getKilometrage).reversed();
+        this.flotte.getVehicules().sort(parKmDecroissant);
     }
 }
