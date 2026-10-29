@@ -1,4 +1,5 @@
 package DAO;
 
-public class SalarieDAO {
+public interface SalarieDAO {
+    //TODO
 }

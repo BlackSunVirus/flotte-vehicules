@@ -1,4 +1,5 @@
 package DAO;
 
-public class ReservationDAO {
+public interface ReservationDAO {
+    //TODO
 }
