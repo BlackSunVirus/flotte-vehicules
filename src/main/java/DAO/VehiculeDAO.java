@@ -5,11 +5,12 @@ import models.Vehicule;
 import java.util.List;
 
 public interface VehiculeDAO {
-    void creer(Vehicule vehicule);
+    boolean creer(Vehicule vehicule);
     Vehicule trouverParId(int id);
-    Vehicule trouverParImmatriculation(String immat);
+    Vehicule trouverParImmat(String immat);
     List<Vehicule> lister();
-    void modifier(Vehicule vehicule);
-    void supprimer(int id);
+    boolean modifier(Vehicule vehicule);
+    boolean supprimer(int id);
+    boolean supprimerParImmat(String immat);
 
 }
