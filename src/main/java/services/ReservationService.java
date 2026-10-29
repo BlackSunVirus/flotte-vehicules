@@ -21,7 +21,7 @@ public class ReservationService {
         this.reservationDAO = reservationDAO;
     }
     public void enregistrerRetour(String immatriculation, int kmRetour) {
-        Vehicule v = vehiculeDAO.trouverParImmatriculation(immatriculation);
+        Vehicule v = vehiculeDAO.trouverParImmat(immatriculation);
 // Règles de gestion
         if (v == null) {
             throw new RegleGestionException("véhicule inconnu");
