@@ -1,5 +1,6 @@
 package controllers;
 
+import exceptions.RegleGestionException;
 import services.ReservationService;
 
 public class ReservationController {
