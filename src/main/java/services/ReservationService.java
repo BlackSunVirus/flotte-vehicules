@@ -8,7 +8,7 @@ import models.Vehicule;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.security.Timestamp;
+import java.sql.Timestamp;
 
 public class ReservationService {
 
@@ -33,8 +33,7 @@ public class ReservationService {
             throw new RegleGestionException("kilométrage inférieur au compteur actuel");
         }
 // Persistance : deux DAO pour une seule action
-        reservationDAO.cloturer(v.getId(), new Timestamp(System.currentTimeMillis()),
-                kmRetour);
+        reservationDAO.cloturer(v.getId(), new Timestamp(System.currentTimeMillis()), kmRetour);
         v.setKilometrage(kmRetour);
         vehiculeDAO.modifier(v);
         log.info("Retour de {} à {} km", immatriculation, kmRetour);
