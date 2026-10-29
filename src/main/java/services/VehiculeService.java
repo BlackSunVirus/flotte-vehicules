@@ -35,7 +35,7 @@ public class VehiculeService {
         if(vehiculeDispo == 0) {
             throw new SQLException("Le véhicule n'est pas disponible");
         }
-        vehiculeDAO.supprimer(immat);
+        vehiculeDAO.supprimerParImmat(immat);
         flotte.getVehicules().removeIf(vehicule -> vehicule.getImmatriculation() == immat);
     }
 

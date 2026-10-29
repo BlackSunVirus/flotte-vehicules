@@ -18,6 +18,22 @@ public class Vehicule {
             throw new IllegalArgumentException("immatriculation invalide");
         if(kilometrage < 0)
             throw new IllegalArgumentException("kilometrage < 0");
+        this.id = id;
+        this.immatriculation = immatriculation;
+        this.marque = marque;
+        this.modele = modele;
+        this.miseEnCirculation = miseEnCirculation;
+        this.kilometrage = kilometrage;
+
+    }
+    public Vehicule(String immatriculation, String marque, String modele, LocalDate miseEnCirculation, int kilometrage) {
+
+        // check le format de l'immatriculation --> "AB-123-CD"
+        String regex = "[A-Z]{2}-\\d{3}-[A-Z]{2}$";
+        if(!immatriculation.matches(regex))
+            throw new IllegalArgumentException("immatriculation invalide");
+        if(kilometrage < 0)
+            throw new IllegalArgumentException("kilometrage < 0");
         this.immatriculation = immatriculation;
         this.marque = marque;
         this.modele = modele;
