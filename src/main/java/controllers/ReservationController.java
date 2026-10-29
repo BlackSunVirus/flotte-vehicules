@@ -3,10 +3,13 @@ package controllers;
 import exceptions.RegleGestionException;
 import services.ReservationService;
 
-public class ReservationController {
+import java.util.Scanner;
+
+public class ReservationController extends BaseController {
 
     private final ReservationService reservationService;
-    public ReservationController(ReservationService reservationService) {
+    public ReservationController(Scanner scanner, ReservationService reservationService) {
+        super(scanner);
         this.reservationService = reservationService;
     }
     /** Renvoie le message à afficher par la vue. */

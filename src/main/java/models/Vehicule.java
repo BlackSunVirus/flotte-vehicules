@@ -7,10 +7,10 @@ public class Vehicule {
     private String immatriculation;
     private String marque;
     private String modele;
-    private LocalDate miseEnCirculation;
+    private LocalDate dateMiseEnCirculation;
     private int kilometrage;
 
-    public Vehicule(int id, String immatriculation, String marque, String modele, LocalDate miseEnCirculation, int kilometrage) {
+    public Vehicule(int id, String immatriculation, String marque, String modele, LocalDate dateMiseEnCirculation, int kilometrage) {
 
         // check le format de l'immatriculation --> "AB-123-CD"
         String regex = "[A-Z]{2}-\\d{3}-[A-Z]{2}$";
@@ -37,7 +37,7 @@ public class Vehicule {
         this.immatriculation = immatriculation;
         this.marque = marque;
         this.modele = modele;
-        this.miseEnCirculation = miseEnCirculation;
+        this.dateMiseEnCirculation = dateMiseEnCirculation;
         this.kilometrage = kilometrage;
 
     }
@@ -74,12 +74,12 @@ public class Vehicule {
         this.modele = modele;
     }
 
-    public LocalDate getMiseEnCirculation() {
-        return miseEnCirculation;
+    public LocalDate getDateMiseEnCirculation() {
+        return dateMiseEnCirculation;
     }
 
-    public void setMiseEnCirculation(LocalDate miseEnCirculation) {
-        this.miseEnCirculation = miseEnCirculation;
+    public void setDateMiseEnCirculation(LocalDate miseEnCirculation) {
+        this.dateMiseEnCirculation = miseEnCirculation;
     }
 
     public int getKilometrage() {
@@ -97,7 +97,7 @@ public class Vehicule {
                 ", immatriculation='" + immatriculation + '\'' +
                 ", marque='" + marque + '\'' +
                 ", modele='" + modele + '\'' +
-                ", miseEnCirculation=" + miseEnCirculation +
+                ", dateMiseEnCirculation=" + dateMiseEnCirculation +
                 ", kilometrage=" + kilometrage +
                 '}';
     }
