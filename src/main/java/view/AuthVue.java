@@ -8,13 +8,13 @@ public class AuthVue extends BaseVue {
         super(scan);
     }
 
-    public String saisirLogin(){
-        return saisieString("Saisir login : ");
-    }
-
-    public String saisirMdp(){
-        return saisieString("Sasir mot de passe : ");
-    }
+//    public String saisirLogin(){
+//        return saisieString("Saisir login : ");
+//    }
+//
+//    public String saisirMdp(){
+//        return saisieString("Sasir mot de passe : ");
+//    }
 
     @Override
     public void afficherSucces(String msg) {
