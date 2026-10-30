@@ -1,16 +1,15 @@
 package models;
 
-import java.sql.Timestamp;
-
-public class Reservations <S,K,V>{
+public class Reservations<S,K,V>{
     private S  salarie;
-    private K date;
-    private V vehicule;
+    // TODO timestamp date ? ou idReservation ?
+    private K idReservation;
+    private V reservation;
 
-    public Reservations(S salarie, K date, V vehicule) {
+    public Reservations(S salarie, K idReservation, V reservation) {
         this.salarie = salarie;
-        this.date = date;
-        this.vehicule = vehicule;
+        this.idReservation = idReservation;
+        this.reservation = reservation;
     }
 
     public S getSalarie() {
@@ -22,27 +21,27 @@ public class Reservations <S,K,V>{
     }
 
     public K getDate() {
-        return date;
+        return idReservation;
     }
 
-    public void setDate(K date) {
-        this.date = date;
+    public void setDate(K idReservation) {
+        this.idReservation = idReservation;
     }
 
     public V getVehicule() {
-        return vehicule;
+        return reservation;
     }
 
-    public void setVehicule(V vehicule) {
-        this.vehicule = vehicule;
+    public void setVehicule(V reservation) {
+        this.reservation = reservation;
     }
 
     @Override
     public String toString() {
         return "Reservations{" +
                 "salarie=" + salarie +
-                ", date=" + date +
-                ", vehicule=" + vehicule +
+                ", idReservation=" + idReservation +
+                ", reservation=" + reservation +
                 '}';
     }
 }

@@ -38,7 +38,7 @@ public class VehiculeDAOImpl implements VehiculeDAO{
             ps.setString(1, vehicule.getImmatriculation());
             ps.setString(2,vehicule.getMarque());
             ps.setString(3, vehicule.getModele());
-            ps.setDate(4,java.sql.Date.valueOf(vehicule.getMiseEnCirculation()));
+            ps.setDate(4,java.sql.Date.valueOf(vehicule.getDateMiseEnCirculation()));
             ps.setInt(5,vehicule.getKilometrage());
             return ps.executeUpdate()>0;
         } catch (SQLException | ClassNotFoundException e) {
@@ -140,7 +140,7 @@ public class VehiculeDAOImpl implements VehiculeDAO{
             ps.setString(1,vehicule.getImmatriculation());
             ps.setString(2,vehicule.getMarque());
             ps.setString(3,vehicule.getModele());
-            ps.setDate(4,java.sql.Date.valueOf(vehicule.getMiseEnCirculation()));
+            ps.setDate(4,java.sql.Date.valueOf(vehicule.getDateMiseEnCirculation()));
             ps.setInt(5,vehicule.getKilometrage());
             ps.setInt(6,vehicule.getId());
 
