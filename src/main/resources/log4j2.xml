@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+
+    <Properties>
+        <Property name="LOG_PATTERN">%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n</Property>
+    </Properties>
+
+    <Appenders>
+        <File name="FichierFlotte" fileName="logs/flotte.log">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+        </File>
+
+        <File name="FichierAuth" fileName="logs/auth.log">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+        </File>
+
+    </Appenders>
+
+    <Loggers>
+        <!-- Les logs qui vont dans flotte.log voir quoi mettre dedans ???? plusieurs classes ?? -->
+        <Logger name="" level="erreur" additivity="false">
+            <AppenderRef ref="FichierFlotte"/>
+        </Logger>
+
+        <!-- Les logs de le classe AuthService vont dans auth.log
+            utilisation de level="info" pour avoir chaque tentative d'auth.
+        -->
+        <Logger name="services.AuthService" level="info" additivity="false">
+            <AppenderRef ref="FichierAuth"/>
+        </Logger>
+
+    </Loggers>
+
+</Configuration>
