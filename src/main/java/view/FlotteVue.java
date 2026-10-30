@@ -21,7 +21,7 @@ public class FlotteVue extends BaseVue {
             String modele = saisieString("Modèle                           : ");
             LocalDate dateMiseEnCirculation = saisieDate("Mise en circulation (jj/mm/aaaa) : ");
             int kilometrage = saisieInt("Kilométrage                      : ");
-            return new Vehicule(0, immatriculation, marque, modele, dateMiseEnCirculation, kilometrage);
+            return new Vehicule(0, immatriculation.toUpperCase(), marque, modele, dateMiseEnCirculation, kilometrage);
 
         } catch(RegleGestionException e) {
             System.err.println(e.getMessage());
@@ -36,10 +36,10 @@ public class FlotteVue extends BaseVue {
         }
         StringBuilder sb = new StringBuilder();
         String separateur = "+---------------+---------------+---------------+" +
-                "---------------+---------------+---------------+";
+                "---------------+---------------+----------------+";
         sb.append("FLOTTE - ").append(flotteActuelle.getVehicules().size()).append(" véhicules").append("\n");
         sb.append(separateur).append("\n");
-        sb.append(String.format("| %-13s | %-13s | %-13s | %-13s | %-13s | %-13s |", "Immat.", "Marque",
+        sb.append(String.format("| %-13s | %-13s | %-13s | %-13s | %-13s | %-13s  |", "Immat.", "Marque",
                 "Modèle", "Mise circ.", "Km", "État")).append("\n");
         sb.append(separateur).append("\n");
         for (Vehicule v : flotteActuelle.getVehicules()) {
@@ -51,7 +51,6 @@ public class FlotteVue extends BaseVue {
             String etat = estDisponible ? "Disponible" : "En déplacement";
             sb.append(String.format("| %-13s | %-13s | %-13s | %-13s | %-13s | %-13s |", v.getImmatriculation(), v.getMarque(),
                     v.getModele(), v.getDateMiseEnCirculation(), v.getKilometrage(), etat)).append("\n");
-            System.out.println(v);
         }
         sb.append(separateur).append("\n");
         System.out.println(sb);

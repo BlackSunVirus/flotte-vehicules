@@ -32,7 +32,7 @@ public class FlotteController {
                 throw new RegleGestionException("Erreur : le véhicule existe déjà");
             }
             vehiculeService.ajouterVehicule(v);
-            vueFlotte.afficherSucces("Véhicule ajouté !");
+            vueFlotte.afficherSucces("Demande d'ajout enregistrée ! Le traitement se fait en arrière plan");
         } catch (RegleGestionException | IllegalArgumentException | SQLException e) {
             vueFlotte.afficherErreur(e.getMessage());
         } catch (ClassNotFoundException e) {
@@ -54,7 +54,8 @@ public class FlotteController {
             if(confirmationSuppression.equalsIgnoreCase("o") ||
             confirmationSuppression.equalsIgnoreCase("oui")){
                 vehiculeService.supprimerVehicule(immatriculation);
-                vueFlotte.afficherSucces("Véhicule " + immatriculation + " retiré de la flotte.");
+                vueFlotte.afficherSucces("La demande pour retirer le véhicule " + immatriculation +
+                        " est enregistrée. Le traitement se fait en arrière plan");
                 return;
             }
             vueFlotte.afficherSucces("Annulation...");

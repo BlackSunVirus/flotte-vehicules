@@ -1,6 +1,7 @@
 package controllers;
 
 import exceptions.SaisieInvalideException;
+import utils.GroupeThread;
 import view.MenuVue;
 
 import java.util.InputMismatchException;
@@ -61,6 +62,12 @@ public class MainController {
                         break;
                     case 0:
                         menuVue.afficherSucces("Au revoir !");
+                        // fermeture des Thread
+                        try {
+                            GroupeThread.fermer();
+                        } catch (InterruptedException e) {
+                            System.err.println("Erreur lors de la fermeture des thread");
+                        }
                         System.exit(0);
                         break;
                     default:
