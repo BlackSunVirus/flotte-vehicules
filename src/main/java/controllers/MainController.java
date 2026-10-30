@@ -35,6 +35,7 @@ public class MainController {
                 switch (choix) {
                     case 1:
                         flotteC.afficherFlotte();
+//                        flotteC.etatFlottePdf();
                         break;
                     case 2:
                         flotteC.ajouterVehicule();
