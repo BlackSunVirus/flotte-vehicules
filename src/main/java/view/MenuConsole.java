@@ -1,4 +1,4 @@
-package vue;
+package view;
 
 public class MenuConsole {
 }

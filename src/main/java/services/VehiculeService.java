@@ -30,16 +30,23 @@ public class VehiculeService {
     }
 
     public void supprimerVehicule(String immat) throws SQLException {
+
+        vehiculeDAO.supprimerParImmat(immat);
+        flotte.getVehicules().removeIf(vehicule -> vehicule.getImmatriculation() == immat);
+    }
+
+    public boolean estDisponible(String immat) throws SQLException {
         Vehicule v = vehiculeDAO.trouverParImmat(immat);
         if (v == null) {
             throw new SQLException("Le véhicule n'existe pas");
         }
+
         int vehiculeDispo = reservationDAO.vehiculeDisponibleParImmat(immat);
         if(vehiculeDispo == 0) {
-            throw new SQLException("Le véhicule n'est pas disponible");
+            return false;
         }
-        vehiculeDAO.supprimerParImmat(immat);
-        flotte.getVehicules().removeIf(vehicule -> vehicule.getImmatriculation() == immat);
+
+        return true;
     }
 
     public Vehicule obtenirParImmat(String immat) {

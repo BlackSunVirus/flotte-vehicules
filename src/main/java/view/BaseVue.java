@@ -1,4 +1,4 @@
-package controllers;
+package view;
 
 import exceptions.SaisieInvalideException;
 
@@ -7,11 +7,11 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.Scanner;
 
-public class BaseController {
+public abstract class BaseVue {
     protected final Scanner scan;
     private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
-    protected BaseController(Scanner scan) {
+    protected BaseVue(Scanner scan) {
         this.scan = scan;
     }
 
@@ -62,5 +62,13 @@ public class BaseController {
                 System.out.println("\u001B[31mVeuillez entrer un nombre entier valide\u001B[0m");
             }
         }
+    }
+
+    public void afficherSucces(String msg) {
+        System.out.println(msg);
+    }
+
+    public void afficherErreur(String msg) {
+        System.out.println("\u001B[31m" + msg + "\u001B[0m");
     }
 }

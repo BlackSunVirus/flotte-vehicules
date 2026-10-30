@@ -1,10 +1,12 @@
 package controllers;
 
+import view.BaseVue;
+
 import java.util.Scanner;
 
-public class AuthController extends BaseController {
+public class AuthController {
 
-    public AuthController(Scanner scan) {
-        super(scan);
+    public AuthController() {
+
     }
 }
