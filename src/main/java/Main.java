@@ -1,7 +1,7 @@
 import DAO.DAOFactory;
 import controllers.ReservationController;
 import services.ReservationService;
-import vue.MenuConsole;
+import view.MenuConsole;
 
 public class Main {
     static void main() throws ClassNotFoundException {

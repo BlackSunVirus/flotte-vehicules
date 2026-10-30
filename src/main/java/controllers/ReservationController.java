@@ -2,10 +2,11 @@ package controllers;
 
 import exceptions.RegleGestionException;
 import services.ReservationService;
+import view.BaseVue;
 
 import java.util.Scanner;
 
-public class ReservationController extends BaseController {
+public class ReservationController extends BaseVue {
 
     private final ReservationService reservationService;
     public ReservationController(Scanner scanner, ReservationService reservationService) {
