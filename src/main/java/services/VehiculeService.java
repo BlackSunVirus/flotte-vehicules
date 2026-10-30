@@ -22,9 +22,10 @@ public class VehiculeService {
         this.vehiculeDAO = new VehiculeDAOImpl();
         this.reservationDAO = new ReservationDAOImpl();
         this.flotte = new Flotte(new ArrayList<>());
+        flotte.setVehicules(vehiculeDAO.lister());
     }
 
-    public void ajouterVehicule(Vehicule v) {
+    public void ajouterVehicule(Vehicule v) throws SQLException, ClassNotFoundException {
         vehiculeDAO.creer(v);
         flotte.getVehicules().add(v);
     }

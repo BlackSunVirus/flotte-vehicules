@@ -15,8 +15,8 @@ public abstract class BaseVue {
         this.scan = scan;
     }
 
-    protected String saisieString(String msg) throws SaisieInvalideException {
-        System.out.println(msg);
+    public String saisieString(String msg) throws SaisieInvalideException {
+        System.out.print(msg);
         String nom = scan.nextLine();
         if (nom.isEmpty()) {
             throw new SaisieInvalideException("Saisie invalide");
@@ -24,7 +24,7 @@ public abstract class BaseVue {
         return nom;
     }
 
-    protected LocalDate saisieDate(String msg) throws SaisieInvalideException {
+    public LocalDate saisieDate(String msg) throws SaisieInvalideException {
         while (true) {
             System.out.print(msg);
             String saisie = scan.nextLine();
@@ -40,7 +40,7 @@ public abstract class BaseVue {
         }
     }
 
-    protected int saisieInt(String msg) {
+    public int saisieInt(String msg) {
         while (true) {
             System.out.print(msg);
             String saisie = scan.nextLine();
@@ -52,7 +52,7 @@ public abstract class BaseVue {
         }
     }
 
-    protected double saisieDouble(String msg) {
+    public double saisieDouble(String msg) {
         while (true) {
             System.out.print(msg);
             String saisie = scan.nextLine();

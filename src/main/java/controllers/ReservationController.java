@@ -6,11 +6,10 @@ import view.BaseVue;
 
 import java.util.Scanner;
 
-public class ReservationController extends BaseVue {
+public class ReservationController {
 
     private final ReservationService reservationService;
     public ReservationController(Scanner scanner, ReservationService reservationService) {
-        super(scanner);
         this.reservationService = reservationService;
     }
     /** Renvoie le message à afficher par la vue. */
