@@ -14,8 +14,8 @@ public class AuthController {
     }
 
     public void verifAuth(){
-        String login = vue.saisirLogin();
-        String pass = vue.saisirMdp();
+        String login = vue.saisieString("Saisir le login : ");
+        String pass = vue.saisieString("Saisir le mot de passe : ");
         int compteur = 0;
 
         while (compteur != 3){

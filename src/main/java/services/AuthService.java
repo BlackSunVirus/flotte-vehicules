@@ -22,14 +22,24 @@ public class AuthService {
     public boolean verifPass(String pass){
         try {
             BCrypt.Result result = BCrypt.verifyer().verify(pass.toCharArray(),hashPass);
+
+            if(!result.verified){
+                log.error("Saisie mot de passe non valide pour l'utilisateur {}", loginUser);
+            }
+            log.info("Saisie mot de passe pour l'utilisateur {}",loginUser);
             return result.verified;
         }catch (Exception e){
             System.out.println(e.getMessage());
+            log.error("Erreur saisie mot de passe",e);
             return false;
         }
     }
 
     public boolean verifLogin(String login){
+        if(!loginUser.equals(login)){
+            log.error("Saisie login non valide");
+        }
+        log.info("Saisie login");
         return loginUser.equals(login);
     }
 
