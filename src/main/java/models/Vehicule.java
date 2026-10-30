@@ -22,7 +22,7 @@ public class Vehicule {
         this.immatriculation = immatriculation;
         this.marque = marque;
         this.modele = modele;
-        this.miseEnCirculation = miseEnCirculation;
+        this.dateMiseEnCirculation = dateMiseEnCirculation;
         this.kilometrage = kilometrage;
 
     }
