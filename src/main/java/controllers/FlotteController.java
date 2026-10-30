@@ -3,9 +3,11 @@ package controllers;
 import exceptions.RegleGestionException;
 import models.Flotte;
 import models.Vehicule;
+import services.PdfService;
 import services.VehiculeService;
 import view.FlotteVue;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
@@ -15,10 +17,34 @@ public class FlotteController {
 
     private VehiculeService vehiculeService;
     private FlotteVue vueFlotte;
+    private PdfService pdfService;
 
     public FlotteController(Scanner scan) {
         this.vehiculeService = new VehiculeService();
         this.vueFlotte = new FlotteVue(scan);
+        this.pdfService = new PdfService("etat-flotte.pdf");
+    }
+
+    public void etatFlottePdf(){
+        try {
+            Flotte flotteActuelle = vehiculeService.afficherFlotte();
+            Map<String, Boolean> disponibilites = new HashMap<>();
+
+            // check la disponibilité des véhicules
+            if(flotteActuelle != null) {
+                for(Vehicule v : flotteActuelle.getVehicules()) {
+                    boolean dispo = vehiculeService.estDisponible(v.getImmatriculation());
+                    disponibilites.put(v.getImmatriculation(), dispo);
+                }
+            }
+            pdfService.exporterFlottePdf(vueFlotte.exportTableauFlotte(flotteActuelle,disponibilites));
+        } catch (RegleGestionException e) {
+            System.err.println(e.getMessage());
+        } catch (SQLException | IOException e) {
+            throw new RuntimeException(e);
+        }
+
+
     }
 
     public void ajouterVehicule() {
