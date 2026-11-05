@@ -35,7 +35,6 @@
             <version>3.2.3</version>
             <scope>compile</scope>
         </dependency>
-        <!-- Pour PDF -->
         <dependency>
             <groupId>com.itextpdf</groupId>
             <artifactId>itextpdf</artifactId>
@@ -50,13 +49,13 @@
             <groupId>com.itextpdf</groupId>
             <artifactId>kernel</artifactId>
             <version>9.3.0</version>
-            <!--  kernel depends on io  -->
+            <!-- kernel depends on io -->
         </dependency>
         <dependency>
             <groupId>com.itextpdf</groupId>
             <artifactId>layout</artifactId>
             <version>9.3.0</version>
-            <!--  layout depends on kernel  -->
+            <!-- layout depends on kernel -->
         </dependency>
         <!-- API Brevo -->
         <dependency>
@@ -72,6 +71,7 @@
             <version>0.10.2</version>
             <scope>compile</scope>
         </dependency>
+
     </dependencies>
 
 </project>

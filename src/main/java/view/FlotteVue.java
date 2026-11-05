@@ -56,6 +56,32 @@ public class FlotteVue extends BaseVue {
         System.out.println(sb);
     }
 
+    public String exportTableauFlotte(Flotte flotteActuelle, Map<String, Boolean> disponibilites) {
+        if(flotteActuelle == null || flotteActuelle.getVehicules().isEmpty()) {
+            return "La flotte est actuellement vide.";
+        }
+        StringBuilder sb = new StringBuilder();
+        String separateur = "+---------------+---------------+---------------+" +
+                "---------------+---------------+----------------+";
+        sb.append("FLOTTE - ").append(flotteActuelle.getVehicules().size()).append(" véhicules").append("\n");
+        sb.append(separateur).append("\n");
+        sb.append(String.format("| %-13s | %-13s | %-13s | %-13s | %-13s | %-13s  |", "Immat.", "Marque",
+                "Modèle", "Mise circ.", "Km", "État")).append("\n");
+        sb.append(separateur).append("\n");
+        for (Vehicule v : flotteActuelle.getVehicules()) {
+            boolean estDisponible = disponibilites.get(v.getImmatriculation());
+
+            // vue prend dans le hashmap fourni par le controller
+            estDisponible = disponibilites.getOrDefault(v.getImmatriculation(), false);
+            // if dispo --> Disponible / else En déplacement
+            String etat = estDisponible ? "Disponible" : "En déplacement";
+            sb.append(String.format("| %-13s | %-13s | %-13s | %-13s | %-13s | %-13s |", v.getImmatriculation(), v.getMarque(),
+                    v.getModele(), v.getDateMiseEnCirculation(), v.getKilometrage(), etat)).append("\n");
+        }
+        sb.append(separateur).append("\n");
+        return sb.toString();
+    }
+
     public void affichageTrie(int choix, Flotte flotte) {
         StringBuilder sb = new StringBuilder();
         if (choix == 1){
