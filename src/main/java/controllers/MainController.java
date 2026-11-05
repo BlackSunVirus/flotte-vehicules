@@ -4,6 +4,7 @@ import exceptions.SaisieInvalideException;
 import utils.GroupeThread;
 import view.MenuVue;
 
+import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -59,6 +60,18 @@ public class MainController {
                         //TODO
                         break;
                     case 9:
+                        //TODO
+                        break;
+                    case 10:
+                        //TODO
+                        break;
+                    case 11:
+                        flotteC.etatFlottePdf();
+                        break;
+                    case 12:
+                        //TODO
+                        break;
+                    case 13:
                         //TODO
                         break;
                     case 0:
