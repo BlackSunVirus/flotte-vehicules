@@ -22,6 +22,11 @@ public class MenuVue extends BaseVue {
         System.out.println("  7. Enregistrer un départ");
         System.out.println("  8. Enregistrer un retour");
         System.out.println("  9. Véhicules en déplacement");
+        System.out.println("  10. Historique d'un salarié");
+        System.out.println("ÉTATS ET EXPORTS");
+        System.out.println("  11. Générer l'état PDF et l'envoyer par courriel");
+        System.out.println("  12. Exporter salariés et réservations (AES)");
+        System.out.println("  13. Lire un fichier exporté");
         System.out.println("  0. Quitter");
         System.out.println("==============================================");
     }
