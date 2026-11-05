@@ -2,11 +2,12 @@ package services;
 
 
 import at.favre.lib.crypto.bcrypt.BCrypt;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import tools.jackson.databind.ObjectMapper;
 
 import java.io.File;
+import java.io.IOException;
 
 public class AuthService {
     private static final Logger log = LogManager.getLogger(AuthService.class);
@@ -16,7 +17,7 @@ public class AuthService {
     private String  hashPass = auth.getHashPass();
 
 
-    public AuthService() {
+    public AuthService() throws IOException {
     }
 
     public boolean verifPass(String pass){

@@ -72,7 +72,7 @@ public class MailService {
         }
     }
 
-    public String envoyer(String cheminFichier) throws ApiException, IOException {
+    public String envoyer(String cheminFichier) throws sendinblue.ApiException, IOException {
         TransactionalEmailsApi api = new TransactionalEmailsApi();
 
         // CORRECTION : On instancie l'email builder tout de suite au début
@@ -82,8 +82,6 @@ public class MailService {
         SendSmtpEmailSender sender = new SendSmtpEmailSender();
         sender.setEmail(EMAIL_EXPEDITEUR);
         sender.setName(EMAIL_EXPEDITEUR_NOM);
-
-        System.out.println(emailDestinataire);
 
         // config destinataire
         List<SendSmtpEmailTo> toList = new ArrayList<>();

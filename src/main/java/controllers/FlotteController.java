@@ -3,6 +3,8 @@ package controllers;
 import exceptions.RegleGestionException;
 import models.Flotte;
 import models.Vehicule;
+import sendinblue.ApiException;
+import services.MailService;
 import services.PdfService;
 import services.VehiculeService;
 import view.FlotteVue;
@@ -18,11 +20,14 @@ public class FlotteController {
     private VehiculeService vehiculeService;
     private FlotteVue vueFlotte;
     private PdfService pdfService;
+    private MailService mailService;
+    private static final String PATH = "data/etat-flotte.pdf";
 
     public FlotteController(Scanner scan) {
         this.vehiculeService = new VehiculeService();
         this.vueFlotte = new FlotteVue(scan);
-        this.pdfService = new PdfService("etat-flotte.pdf");
+        this.pdfService = new PdfService(PATH);
+        this.mailService = new MailService();
     }
 
     public void etatFlottePdf(){
@@ -38,9 +43,12 @@ public class FlotteController {
                 }
             }
             pdfService.exporterFlottePdf(vueFlotte.exportTableauFlotte(flotteActuelle,disponibilites));
+            mailService.envoyer(PATH);
         } catch (RegleGestionException e) {
             System.err.println(e.getMessage());
         } catch (SQLException | IOException e) {
+            throw new RuntimeException(e);
+        } catch (ApiException e) {
             throw new RuntimeException(e);
         }
 
