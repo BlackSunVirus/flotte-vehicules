@@ -56,13 +56,13 @@
             <groupId>com.itextpdf</groupId>
             <artifactId>kernel</artifactId>
             <version>9.3.0</version>
-            <!--  kernel depends on io  -->
+            <!-- kernel depends on io -->
         </dependency>
         <dependency>
             <groupId>com.itextpdf</groupId>
             <artifactId>layout</artifactId>
             <version>9.3.0</version>
-            <!--  layout depends on kernel  -->
+            <!-- layout depends on kernel -->
         </dependency>
         <!-- API Brevo -->
         <dependency>
